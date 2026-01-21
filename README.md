@@ -3,6 +3,7 @@ FIXEDDECIMAL
 
 Works with PostgreSQL 9.5 or higher.
 The latest test was executed on version 12.
+FIXEDDECIMAL is Open Source and the code is developed by 2ndQuadrant. I tried to replicate their functionality as a part of my project-trainee period in Zoho Corporation to incorporate within the analytical database(Columnar Storage).
 
 Overview
 --------
@@ -151,12 +152,3 @@ From psql, in order to create the extension you must type:
 ```
 CREATE EXTENSION fixeddecimal;
 ```
-
-Credits
--------
-
-fixeddecimal is open source using The PostgreSQL Licence, copyright is novated to the PostgreSQL Global Development Group.
-
-Source code developed by 2ndQuadrant, as part of the AXLE project (http://axleproject.eu) which received funding from the European Union’s Seventh Framework Programme (FP7/2007-2015) under grant agreement n° 318633
-
-Lead Developer - David Rowley
