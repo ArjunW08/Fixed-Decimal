@@ -1,0 +1,1179 @@
+create table test(
+    c1 FIXEDDECIMAL(10,3),
+    c2 FIXEDDECIMAL(8,4),
+    c3 smallint,
+    c4 integer,
+    c5 NUMERIC(8,4),
+    c6 FIXEDDECIMAL(7,3)
+);
+insert into test (c1,c2,c3,c4,c5,c6) values(7465234.967,4578.89234,324,7689,8934.1234,6784.479);
+insert into test (c1,c2,c3,c4,c5,c6) values(9845367.967,8934.2923,778,6679,4534.1234,6758.4799);
+insert into test (c1,c2,c3,c4,c5,c6) values(9857566.797,6784.2923,991,5622,8934.2923,8934.29234);
+insert into test (c1,c2,c3,c4,c5,c6) values(9865327.345,4657.2923,999,7622,8439.2923,1200.9278);
+insert into test (c1,c2,c3,c4,c5,c6) values(2358698.700,5643.2973,-991,-5622,-8934.2923,3934.2294);
+insert into test (c1,c2,c3,c4,c5,c6) values(8745347.389,7643.7003,161,-6922,7649.29237,-8934.929);
+insert into test (c1,c2,c3,c4,c5,c6) values(-5435347.789,7898.8934,546,9879,5149.7896,8742.988);
+insert into test (c1,c2,c3,c4,c5,c6) values (1234987.567,1234.56798,453,6666,7654.0978,4321.8765);
+insert into test (c1,c2,c3,c4,c5,c6) values (-1234807.567,1234.5678,766,9532,7664.00079,3225.99899);
+select fixeddecimaleq(c1,c2) from test;
+ fixeddecimaleq 
+----------------
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+(9 rows)
+
+select fixeddecimalne(c1,c2) from test;
+ fixeddecimalne 
+----------------
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+(9 rows)
+
+select fixeddecimallt(c1,c2) from test;
+ fixeddecimallt 
+----------------
+ f
+ f
+ f
+ f
+ f
+ f
+ t
+ f
+ t
+(9 rows)
+
+select fixeddecimalgt(c1,c2) from test;
+ fixeddecimalgt 
+----------------
+ t
+ t
+ t
+ t
+ t
+ t
+ f
+ t
+ f
+(9 rows)
+
+select fixeddecimalle(c2,c6) from test;
+ fixeddecimalle 
+----------------
+ t
+ f
+ t
+ f
+ f
+ f
+ t
+ t
+ t
+(9 rows)
+
+select fixeddecimalge(c2,c6) from test;
+ fixeddecimalge 
+----------------
+ f
+ t
+ f
+ t
+ t
+ t
+ f
+ f
+ f
+(9 rows)
+
+select fixeddecimal_cmp(c2,c6) from test;
+ fixeddecimal_cmp 
+------------------
+               -1
+                1
+               -1
+                1
+                1
+                1
+               -1
+               -1
+               -1
+(9 rows)
+
+select fixeddecimal_int2_eq(c2,c3) from test;
+ fixeddecimal_int2_eq 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+(9 rows)
+
+select fixeddecimal_int2_ne(c2,c3) from test;
+ fixeddecimal_int2_ne 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+(9 rows)
+
+select fixeddecimal_int2_le(c2,c3) from test;
+ fixeddecimal_int2_le 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+(9 rows)
+
+select fixeddecimal_int2_ge(c2,c3) from test;
+ fixeddecimal_int2_ge 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+(9 rows)
+
+select fixeddecimal_int2_gt(c2,c3) from test;
+ fixeddecimal_int2_gt 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+(9 rows)
+
+select fixeddecimal_int2_lt(c2,c3) from test;
+ fixeddecimal_int2_lt 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+(9 rows)
+
+select fixeddecimal_int2_cmp(c2,c3) from test;
+ fixeddecimal_int2_cmp 
+-----------------------
+                     1
+                     1
+                     1
+                     1
+                     1
+                     1
+                     1
+                     1
+                     1
+(9 rows)
+
+select int2_fixeddecimal_cmp(c3,c6) from test;
+ int2_fixeddecimal_cmp 
+-----------------------
+                    -1
+                    -1
+                    -1
+                    -1
+                    -1
+                     1
+                    -1
+                    -1
+                    -1
+(9 rows)
+
+select int2_fixeddecimal_ne(c3,c6) from test;
+ int2_fixeddecimal_ne 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+(9 rows)
+
+select int2_fixeddecimal_le(c3,c6) from test;
+ int2_fixeddecimal_le 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ f
+ t
+ t
+ t
+(9 rows)
+
+select int2_fixeddecimal_ge(c3,c6) from test;
+ int2_fixeddecimal_ge 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ t
+ f
+ f
+ f
+(9 rows)
+
+select int2_fixeddecimal_gt(c3,c6) from test;
+ int2_fixeddecimal_gt 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ t
+ f
+ f
+ f
+(9 rows)
+
+select int2_fixeddecimal_lt(c3,c6) from test;
+ int2_fixeddecimal_lt 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ f
+ t
+ t
+ t
+(9 rows)
+
+select int2_fixeddecimal_eq(c3,c6) from test;
+ int2_fixeddecimal_eq 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+(9 rows)
+
+select fixeddecimal_int4_eq(c1,c4) from test;
+ fixeddecimal_int4_eq 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+(9 rows)
+
+select fixeddecimal_int4_ne(c1,c4) from test;
+ fixeddecimal_int4_ne 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+(9 rows)
+
+select fixeddecimal_int4_le(c1,c4) from test;
+ fixeddecimal_int4_le 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ t
+ f
+ t
+(9 rows)
+
+select fixeddecimal_int4_ge(c1,c4) from test;
+ fixeddecimal_int4_ge 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ f
+ t
+ f
+(9 rows)
+
+select fixeddecimal_int4_lt(c1,c4) from test;
+ fixeddecimal_int4_lt 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ t
+ f
+ t
+(9 rows)
+
+select fixeddecimal_int4_gt(c1,c4) from test;
+ fixeddecimal_int4_gt 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ f
+ t
+ f
+(9 rows)
+
+select fixeddecimal_int4_cmp(c1,c4) from test;
+ fixeddecimal_int4_cmp 
+-----------------------
+                     1
+                     1
+                     1
+                     1
+                     1
+                     1
+                    -1
+                     1
+                    -1
+(9 rows)
+
+select int4_fixeddecimal_eq(c4,c6) from test;
+ int4_fixeddecimal_eq 
+----------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+(9 rows)
+
+select int4_fixeddecimal_ne(c4,c6) from test;
+ int4_fixeddecimal_ne 
+----------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+(9 rows)
+
+select int4_fixeddecimal_le(c4,c6) from test;
+ int4_fixeddecimal_le 
+----------------------
+ f
+ t
+ t
+ f
+ t
+ f
+ f
+ f
+ f
+(9 rows)
+
+select int4_fixeddecimal_ge(c4,c6) from test;
+ int4_fixeddecimal_ge 
+----------------------
+ t
+ f
+ f
+ t
+ f
+ t
+ t
+ t
+ t
+(9 rows)
+
+select int4_fixeddecimal_lt(c4,c6) from test;
+ int4_fixeddecimal_lt 
+----------------------
+ f
+ t
+ t
+ f
+ t
+ f
+ f
+ f
+ f
+(9 rows)
+
+select int4_fixeddecimal_gt(c4,c6) from test;
+ int4_fixeddecimal_gt 
+----------------------
+ t
+ f
+ f
+ t
+ f
+ t
+ t
+ t
+ t
+(9 rows)
+
+select int4_fixeddecimal_cmp(c4,c6) from test;
+ int4_fixeddecimal_cmp 
+-----------------------
+                     1
+                    -1
+                    -1
+                     1
+                    -1
+                     1
+                     1
+                     1
+                     1
+(9 rows)
+
+select fixeddecimal_numeric_eq(c2,c5) from test;
+ fixeddecimal_numeric_eq 
+-------------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+(9 rows)
+
+select fixeddecimal_numeric_ne(c2,c5) from test;
+ fixeddecimal_numeric_ne 
+-------------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+(9 rows)
+
+select fixeddecimal_numeric_le(c2,c5) from test;
+ fixeddecimal_numeric_le 
+-------------------------
+ t
+ f
+ t
+ t
+ f
+ t
+ f
+ t
+ t
+(9 rows)
+
+select fixeddecimal_numeric_ge(c2,c5) from test;
+ fixeddecimal_numeric_ge 
+-------------------------
+ f
+ t
+ f
+ f
+ t
+ f
+ t
+ f
+ f
+(9 rows)
+
+select fixeddecimal_numeric_lt(c2,c5) from test;
+ fixeddecimal_numeric_lt 
+-------------------------
+ t
+ f
+ t
+ t
+ f
+ t
+ f
+ t
+ t
+(9 rows)
+
+select fixeddecimal_numeric_gt(c2,c5) from test;
+ fixeddecimal_numeric_gt 
+-------------------------
+ f
+ t
+ f
+ f
+ t
+ f
+ t
+ f
+ f
+(9 rows)
+
+select fixeddecimal_numeric_cmp(c2,c5) from test;
+ fixeddecimal_numeric_cmp 
+--------------------------
+                       -1
+                        1
+                       -1
+                       -1
+                        1
+                       -1
+                        1
+                       -1
+                       -1
+(9 rows)
+
+select numeric_fixeddecimal_cmp(c5,c1) from test ;
+ numeric_fixeddecimal_cmp 
+--------------------------
+                       -1
+                       -1
+                       -1
+                       -1
+                       -1
+                       -1
+                        1
+                       -1
+                        1
+(9 rows)
+
+select numeric_fixeddecimal_eq(c5,c1) from test ;
+ numeric_fixeddecimal_eq 
+-------------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+ f
+(9 rows)
+
+select numeric_fixeddecimal_ne(c5,c1) from test ;
+ numeric_fixeddecimal_ne 
+-------------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+ t
+(9 rows)
+
+select numeric_fixeddecimal_le(c5,c1) from test ;
+ numeric_fixeddecimal_le 
+-------------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ f
+ t
+ f
+(9 rows)
+
+select numeric_fixeddecimal_ge(c5,c1) from test ;
+ numeric_fixeddecimal_ge 
+-------------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ t
+ f
+ t
+(9 rows)
+
+select numeric_fixeddecimal_lt(c5,c1) from test ;
+ numeric_fixeddecimal_lt 
+-------------------------
+ t
+ t
+ t
+ t
+ t
+ t
+ f
+ t
+ f
+(9 rows)
+
+select numeric_fixeddecimal_gt(c5,c1) from test ;
+ numeric_fixeddecimal_gt 
+-------------------------
+ f
+ f
+ f
+ f
+ f
+ f
+ t
+ f
+ t
+(9 rows)
+
+select fixeddecimallt(c1,c2) from test;
+ fixeddecimallt 
+----------------
+ f
+ f
+ f
+ f
+ f
+ f
+ t
+ f
+ t
+(9 rows)
+
+select fixeddecimalgt(c1,c2) from test;
+ fixeddecimalgt 
+----------------
+ t
+ t
+ t
+ t
+ t
+ t
+ f
+ t
+ f
+(9 rows)
+
+select fixeddecimalle(c1,c2) from test;
+ fixeddecimalle 
+----------------
+ f
+ f
+ f
+ f
+ f
+ f
+ t
+ f
+ t
+(9 rows)
+
+select fixeddecimalge(c1,c2) from test;
+ fixeddecimalge 
+----------------
+ t
+ t
+ t
+ t
+ t
+ t
+ f
+ t
+ f
+(9 rows)
+
+select fixeddecimal_cmp(c1,c2) from test;
+ fixeddecimal_cmp 
+------------------
+                1
+                1
+                1
+                1
+                1
+                1
+               -1
+                1
+               -1
+(9 rows)
+
+select fixeddecimalpl(c2,c6) from test;
+ fixeddecimalpl 
+----------------
+ 11363.3713
+ 15692.7713
+ 15718.5843
+ 5858.2193
+ 9577.5263
+ -1291.2287
+ 16641.8814
+ 5556.4439
+ 4460.5658
+(9 rows)
+
+select fixeddecimalmi(c2,c6) from test;
+ fixeddecimalmi 
+----------------
+ -2205.5867
+ 2175.8133
+ -2149.9997
+ 3456.3653
+ 1709.0683
+ 16578.6293
+ -844.0946
+ -3087.3081
+ -1991.4302
+(9 rows)
+
+select fixeddecimalint4pl(c1,c4) from test;
+ fixeddecimalint4pl 
+--------------------
+ 7472923.967
+ 9852046.967
+ 9863188.797
+ 9872949.345
+ 2353076.700
+ 8738425.389
+ -5425468.789
+ 1241653.567
+ -1225275.567
+(9 rows)
+
+select fixeddecimalint4mi(c1,c4) from test;
+ fixeddecimalint4mi 
+--------------------
+ 7457545.967
+ 9838688.967
+ 9851944.797
+ 9857705.345
+ 2364320.700
+ 8752269.389
+ -5445226.789
+ 1228321.567
+ -1244339.567
+(9 rows)
+
+select fixeddecimalint2pl(c2,c3) from test;
+ fixeddecimalint2pl 
+--------------------
+ 4902.8923
+ 9712.2923
+ 7775.2923
+ 5656.2923
+ 4652.2973
+ 7804.7003
+ 8444.8934
+ 1687.5679
+ 2000.5678
+(9 rows)
+
+select fixeddecimalint2mi(c2,c3) from test;
+ fixeddecimalint2mi 
+--------------------
+ 4254.8923
+ 8156.2923
+ 5793.2923
+ 3658.2923
+ 6634.2973
+ 7482.7003
+ 7352.8934
+ 781.5679
+ 468.5678
+(9 rows)
+
+select int4fixeddecimalpl(c4,c1) from test;
+ int4fixeddecimalpl 
+--------------------
+ 7472923.967
+ 9852046.967
+ 9863188.797
+ 9872949.345
+ 2353076.700
+ 8738425.389
+ -5425468.789
+ 1241653.567
+ -1225275.567
+(9 rows)
+
+select int4fixeddecimalmi(c4,c1) from test;
+ int4fixeddecimalmi 
+--------------------
+ -7457545.967
+ -9838688.967
+ -9851944.797
+ -9857705.345
+ -2364320.700
+ -8752269.389
+ 5445226.789
+ -1228321.567
+ 1244339.567
+(9 rows)
+
+select int2fixeddecimalpl(c3,c2) from test;
+ int2fixeddecimalpl 
+--------------------
+ 4902.8923
+ 9712.2923
+ 7775.2923
+ 5656.2923
+ 4652.2973
+ 7804.7003
+ 8444.8934
+ 1687.5679
+ 2000.5678
+(9 rows)
+
+select int2fixeddecimalmi(c3,c2) from test;
+ int2fixeddecimalmi 
+--------------------
+ -4254.8923
+ -8156.2923
+ -5793.2923
+ -3658.2923
+ -6634.2973
+ -7482.7003
+ -7352.8934
+ -781.5679
+ -468.5678
+(9 rows)
+
+select fixeddecimalnumericpl(c1,c5) from test;
+ fixeddecimalnumericpl 
+-----------------------
+ 7474169.0904
+ 9849902.0904
+ 9866501.0893
+ 9873766.6373
+ 2349764.4077
+ 8752996.6814
+ -5430197.9994
+ 1242641.6648
+ -1227143.5662
+(9 rows)
+
+select fixeddecimalnumericmi(c1,c5) from test;
+ fixeddecimalnumericmi 
+-----------------------
+ 7456300.8436
+ 9840833.8436
+ 9848632.5047
+ 9856888.0527
+ 2367632.9923
+ 8737698.0966
+ -5440497.5786
+ 1227333.4692
+ -1242471.5678
+(9 rows)
+
+select numericfixeddecimalpl(c5,c1) from test;
+ numericfixeddecimalpl 
+-----------------------
+ 7474169.0904
+ 9849902.0904
+ 9866501.0893
+ 9873766.6373
+ 2349764.4077
+ 8752996.6814
+ -5430197.9994
+ 1242641.6648
+ -1227143.5662
+(9 rows)
+
+select numericfixeddecimalmi(c5,c1) from test;
+ numericfixeddecimalmi 
+-----------------------
+ -7456300.8436
+ -9840833.8436
+ -9848632.5047
+ -9856888.0527
+ -2367632.9923
+ -8737698.0966
+ 5440497.5786
+ -1227333.4692
+ 1242471.5678
+(9 rows)
+
+select fixeddecimalmul(c2,c6) from test;
+  fixeddecimalmul  
+-------------------
+ 31065398.6526117
+ 60382226.8894117
+ 60612848.4215516
+ 5593068.0699621
+ 22202023.8932817
+ -68295919.4777787
+ 69059930.2094792
+ 5335649.3773804
+ 3982713.2536644
+(9 rows)
+
+select fixeddecimalint4mul(c1,c4) from test;
+ fixeddecimalint4mul 
+---------------------
+ 57400191661.263
+ 65757212651.593
+ 55419240532.734
+ 75193525023.590
+ -13260604091.400
+ -60535294626.658
+ -53695800807.531
+ 8232427121.622
+ -11770185728.644
+(9 rows)
+
+select int2fixeddecimalmul(c3,c2) from test;
+ int2fixeddecimalmul 
+---------------------
+ 1483561.1052
+ 6950879.4094
+ 6723233.6693
+ 4652635.0077
+ -5592507.6243
+ 1230635.7483
+ 4312795.7964
+ 559259.2587
+ 945678.9348
+(9 rows)
+
+select fixeddecimalnumericmul(c1,c5) from test;
+ fixeddecimalnumericmul 
+------------------------
+ 66695330405.1729278
+ 44640113280.7851278
+ 88070383131.1727631
+ 83256381099.6379435
+ -21073303633.4300100
+ 66895719318.0375436
+ -27990897516.1751944
+ 9452715619.6020526
+ -9463566181.3340536
+(9 rows)
+
+select numericfixeddecimalmul(c5,c1) from test;
+ numericfixeddecimalmul 
+------------------------
+ 66695330405.1729278
+ 44640113280.7851278
+ 88070383131.1727631
+ 83256381099.6379435
+ -21073303633.4300100
+ 66895719318.0375436
+ -27990897516.1751944
+ 9452715619.6020526
+ -9463566181.3340536
+(9 rows)
+
+select fixeddecimalint2mul(c2,c3) from test;
+ fixeddecimalint2mul 
+---------------------
+ 1483561.1052
+ 6950879.4094
+ 6723233.6693
+ 4652635.0077
+ -5592507.6243
+ 1230635.7483
+ 4312795.7964
+ 559259.2587
+ 945678.9348
+(9 rows)
+
+select int4fixeddecimalmul(c4,c1) from test;
+ int4fixeddecimalmul 
+---------------------
+ 57400191661.263
+ 65757212651.593
+ 55419240532.734
+ 75193525023.590
+ -13260604091.400
+ -60535294626.658
+ -53695800807.531
+ 8232427121.622
+ -11770185728.644
+(9 rows)
+
+select fixeddecimaldiv(c2,c6) from test;
+ fixeddecimaldiv 
+-----------------
+ 0.6
+ 1.3
+ 0.7
+ 3.8
+ 1.4
+ -0.8
+ 0.9
+ 0.2
+ 0.3
+(9 rows)
+
+select fixeddecimalint4div(c1,c4) from test;
+ fixeddecimalint4div 
+---------------------
+ 970.898
+ 1474.078
+ 1753.391
+ 1294.322
+ -419.547
+ -1263.413
+ -550.192
+ 185.266
+ -129.543
+(9 rows)
+
+select int4fixeddecimaldiv(c4,c2) from test;
+ int4fixeddecimaldiv 
+---------------------
+ 1.6792
+ 0.7475
+ 0.8286
+ 1.6365
+ -0.9962
+ -0.9055
+ 1.2506
+ 5.3994
+ 7.7209
+(9 rows)
+
+select fixeddecimalint2div(c1,c3) from test;
+ fixeddecimalint2div 
+---------------------
+ 23040.848
+ 12654.714
+ 9947.090
+ 9875.202
+ -2380.119
+ 54318.927
+ -9954.849
+ 2726.241
+ -1612.020
+(9 rows)
+
+select int2fixeddecimaldiv(c3,c6) from test;
+ int2fixeddecimaldiv 
+---------------------
+ 0.047
+ 0.115
+ 0.110
+ 0.831
+ -0.251
+ -0.018
+ 0.062
+ 0.104
+ 0.237
+(9 rows)
+
+select fixeddecimaldiv(c1,c6) from test;
+ fixeddecimaldiv 
+-----------------
+ 1100
+ 1456
+ 1103
+ 8214
+ 599
+ -978
+ -621
+ 285
+ -382
+(9 rows)
+
+select numericfixeddecimaldiv(c5,c6) from test;
+ numericfixeddecimaldiv 
+------------------------
+ 1.3
+ 0.6
+ 1
+ 7
+ -2.2
+ -0.8
+ 0.5
+ 1.7
+ 2.3
+(9 rows)
+
+select fixeddecimalnumericdiv(c1,c5) from test;
+ fixeddecimalnumericdiv 
+------------------------
+ 835.5
+ 2171.3
+ 1103.3
+ 1168.9
+ -264
+ 1143.2
+ -1055.4
+ 161.3
+ -161.1
+(9 rows)
+

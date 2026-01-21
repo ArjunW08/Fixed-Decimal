@@ -1,0 +1,64 @@
+CREATE TABLE fixed_dec (
+    c1 FIXEDDECIMAL,
+    c2 FIXEDDECIMAL
+);
+INSERT INTO fixed_dec VALUES('NaN','inf');
+INSERT INTO fixed_dec VALUES('-inf','inf');
+INSERT INTO fixed_dec VALUES('Infinity','-inf');
+INSERT INTO fixed_dec VALUES('-Infinity','NaN');
+INSERT INTO fixed_dec VALUES('inf','-Infinity');
+INSERT INTO fixed_dec VALUES('NaN','inf');
+INSERT INTO fixed_dec VALUES('NaN','100');
+INSERT INTO fixed_dec VALUES('Infinity','12.34');
+SELECT fixeddecimalpl(c1,c2) FROM fixed_dec;
+ fixeddecimalpl 
+----------------
+ Infinity
+ Infinity
+ -Infinity
+ -Infinity
+ -Infinity
+ Infinity
+ -Infinity
+ -Infinity
+(8 rows)
+
+SELECT fixeddecimalmi(c1,c2) FROM fixed_dec;
+ fixeddecimalmi 
+----------------
+ Infinity
+ Infinity
+ Infinity
+ Infinity
+ Infinity
+ Infinity
+ Infinity
+ Infinity
+(8 rows)
+
+SELECT fixeddecimalmul(c1,c2) FROM fixed_dec;
+ fixeddecimalmul 
+-----------------
+ Infinity
+ Infinity
+ -Infinity
+ NaN
+ -Infinity
+ Infinity
+ NaN
+ NaN
+(8 rows)
+
+SELECT fixeddecimaldiv(c1,c2) FROM fixed_dec;
+ fixeddecimaldiv 
+-----------------
+ 0
+ NaN
+ NaN
+ NaN
+ NaN
+ 0
+ 0
+ NaN
+(8 rows)
+
